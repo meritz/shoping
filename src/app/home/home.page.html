@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      modeste shopping
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onOpenCart()"><ion-icon name="cart"></ion-icon></ion-button>
+      <ion-button><ion-icon name="share"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+      <ion-item *ngFor="let article of ArticlesListe" (click)="showDetails(article)">
+        <ion-thumbnail item-start>
+            <img src = {{article.pictures[0]}} >
+        </ion-thumbnail>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <ion-label>
+            <ion-text>
+              <h3>{{article.title}}</h3>
+            </ion-text>
+            <p>{{article.description}}</p>
+            <ion-text>
+              <p>{{article.price | currency }}
+            </ion-text>
+            <p>
+              <span *ngIf="article.averageStar >=1">
+                <ion-icon color="warning" name="star"></ion-icon>
+              </span>
+              <span *ngIf="article.averageStar >=2">
+                <ion-icon color="warning" name="star"></ion-icon>
+              </span>
+              <span *ngIf="article.averageStar >=3">
+                <ion-icon color="warning" name="star"></ion-icon>
+              </span>
+              <span *ngIf="article.averageStar >=4">
+                <ion-icon color="warning" name="star"></ion-icon>
+              </span>
+              <span *ngIf="article.averageStar >=5">
+                <ion-icon color="warning" name="star"></ion-icon>
+              </span>
+            </p>
+        </ion-label>
+        <!-- <ion-button fill="outline" slot="end">View</ion-button> -->
+      </ion-item>
+    </ion-list>
+ 
+</ion-content>
+<ion-footer>
+ <ion-row>
+   <ion-col>
+     <ion-button expand="block" shape="round">
+       <ion-icon name="camera"></ion-icon>&nbsp;&nbsp;
+       vendre vos biens
+     </ion-button>
+   </ion-col>
+ </ion-row>
+</ion-footer>

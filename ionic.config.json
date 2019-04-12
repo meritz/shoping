@@ -1,0 +1,7 @@
+{
+  "name": "modesteShopping",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

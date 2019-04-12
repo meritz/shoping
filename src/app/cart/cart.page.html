@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mon panier</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+    <ion-list>
+        <ion-item *ngFor="let article of cartItems; let i = index" >
+          <ion-thumbnail item-start>
+              <img [src] = "article.item.pictures[0]" >
+          </ion-thumbnail>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <ion-label>
+              <ion-text>
+                <h3>{{article.item.title}}</h3>
+              </ion-text>
+              <p>
+                <ion-badge color="secondary">{{article.qty}}</ion-badge>X{{article.item.price | currency}}
+              </p>
+              <ion-text>
+                <p *ngIf="article.item.availability.feed" >Livraison:{{article.item.availability.feed | currency}}</p>
+                <p>Total:{{(article.qty*article.item.price)+article.item.availability.feed | currency}}</p>
+              </ion-text>
+              <ion-button>
+                <ion-icon name="mail"></ion-icon>&nbsp;&nbsp;
+                Contacter
+              </ion-button>
+              <ion-button (click)="removeItem(article, i)" color="danger">
+                  <ion-icon name="remove-circle"></ion-icon>
+              </ion-button>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+</ion-content>
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" shape="round">
+          <ion-icon name="cash"></ion-icon>&nbsp;&nbsp;
+          payement : {{total | currency}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
